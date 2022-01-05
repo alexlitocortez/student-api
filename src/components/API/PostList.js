@@ -7,7 +7,7 @@ export class PostList extends Component {
         super(props)
     
         this.state = {
-             posts: []
+             students: []
         }
     }
     
@@ -24,15 +24,27 @@ export class PostList extends Component {
     }
 
     render() {
+
+        const {students} = this.state
+
         return (
             <div>
+                <h1>Student Profiles</h1>
                 {
-                    posts.map(post => <div></div>)
+                    students.map(student => <div key={student.id}>
+                        <p>City: {student.city}</p>,
+                        Company: {student.company},
+                        Email: {student.email},
+                        firstName: {student.firstname},
+                        lastName: {student.lastname},
+                        pic: {student.pic},
+                        skill: {student.skill}
+                    </div>)
                 }
             </div>
         )
-    }
-}
+}}
+
 
 export default PostList
 
