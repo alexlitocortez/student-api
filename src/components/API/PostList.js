@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './PostList.css';
 
 export class PostList extends Component {
@@ -14,29 +14,9 @@ export class PostList extends Component {
 
             const { city, company, email, firstName, id, lastName, skill } = students[0]
             const { city: cityOne, company: companyOne, email: emailOne, firstName: firstNameOne, id: idOne, lastName: lastNameOne, skill: skillOne } = students[1]
-
             const { city: cityTwo, company: companyTwo, email: emailTwo, firstName: firstNameTwo, id: idTwo, lastName: lastNameTwo, skill: skillTwo } = students[2]
             const { city: cityThree, company: companyThree, email: emailThree, firstName: firstNameThree, id: idThree, lastName: lastNameThree, skill: skillThree } = students[3]
             const { city: cityFour, company: companyFour, email: emailFour, firstName: firstNameFour, id: idFour, lastName: lastNameFour, skill: skillFour } = students[4]
-
-            
-            const { city: cityTen, company: companyTen, email: emailTen, firstName: firstNameTen, id: idTen, lastName: lastNameTen, skill: skillTen } = students[10]
-            const { city: cityEleven, company: companyEleven, email: emailEleven, firstName: firstNameEleven, id: idEleven, lastName: lastNameEleven, skill: skillEleven } = students[11]
-            const { city: cityTwelve, company: companyTwelve, email: emailTwelve, firstName: firstNameTwelve, id: idTwelve, lastName: lastNameTwelve, skill: skillTwelve } = students[12]
-            const { city: cityThirteen, company: companyThirteen, email: emailThirteen, firstName: firstNameThirteen, id: idThirteen, lastName: lastNameThirteen, skill: skillThirteen } = students[13]
-            const { city: cityFourteen, company: companyFourteen, email: emailFourteen, firstName: firstNameFourteen, id: idFourteen, lastName: lastNameFourteen, skill: skillFourteen } = students[14]
-            const { city: cityFifteen, company: companyFifteen, email: emailFifteen, firstName: firstNameFifteen, id: idFifteen, lastName: lastNameFifteen, skill: skillFifteen } = students[15]
-            const { city: citySixteen, company: companySixteen, email: emailSixteen, firstName: firstNameSixteen, id: idSixteen, lastName: lastNameSixteen, skill: skillSixteen } = students[16]
-            const { city: citySeventeen, company: companySeventeen, email: emailSeventeen, firstName: firstNameSeventeen, id: idSeventeen, lastName: lastNameSeventeen, skill: skillSeventeen } = students[17]
-            const { city: cityEighteen, company: companyEighteen, email: emailEighteen, firstName: firstNameEighteen, id: idEighteen, lastName: lastNameEighteen, skill: skillEighteen } = students[18]
-            const { city: cityNineteen, company: companyNineteen, email: emailNineteen, firstName: firstNameNineteen, id: idNineteen, lastName: lastNameNineteen, skill: skillNineTeen } = students[19]
-            const { city: cityTwenty, company: companyTwenty, email: emailTwenty, firstName: firstNameTwenty, id: idTwenty, lastName: lastNameTwenty, skill: skillTwenty } = students[20]
-            const { city: cityTwentyOne, company: companyTwentyOne, email: emailTwentyOne, firstName: firstNameTwentyOne, id: idTwentyOne, lastName: lastNameTwentyOne, skill: skillTwentyOne } = students[21]
-            const { city: cityTwentyTwo, company: companyTwentyTwo, email: emailTwentyTwo, firstName: firstNameTwentyTwo, id: idTwentyTwo, lastName: lastNameTwentyTwo, skill: skillTwentyTwo } = students[22]
-            const { city: cityTwentyThree, company: companyTwentyThree, email: emailTwentyThree, firstName: firstNameTwentyThree, id: idTwentyThree, lastName: lastNameTwentyThree, skill: skillTwentyThree } = students[23]
-            const { city: cityTwentyFour, company: companyTwentyFour, email: emailTwentyFour, firstName: firstNameTwentyFour, id: idTwentyFour, lastName: lastNameTwentyFour, skill: skillTwentyFour } = students[24]
-            
-
 
             // Function for getting the average of a student's grades
             
@@ -53,7 +33,6 @@ export class PostList extends Component {
             const averageStudent = findAverage([78, 100, 92, 86, 89, 88, 91, 87]); 
 
             document.getElementById('city-name').textContent = city;
-            document.getElementById('id-name').textContent = id;
             document.getElementById('whole-name').textContent = firstName + " " + lastName;
             document.getElementById('company-name').textContent = company;
             document.getElementById('email-name').textContent = email;
@@ -63,25 +42,50 @@ export class PostList extends Component {
             const averageStudentOne = findAverage([75, 89, 95, 93, 99, 82, 89, 76]);
 
             document.getElementById('city-name-one').textContent = cityOne;
-            document.getElementById('id-name-one').textContent = idOne;
             document.getElementById('whole-name-one').textContent = firstNameOne + " " + lastNameOne;
             document.getElementById('company-name-one').textContent = companyOne;
             document.getElementById('email-name-one').textContent = emailOne;
             document.getElementById('skill-name-one').textContent = skillOne;
             document.getElementById('average-grades-one').textContent = " " + averageStudentOne;
+
+            const averageStudentTwo = findAverage([88, 90, 79, 82, 81, 99, 94, 73]);
+
+            document.getElementById('city-name-two').textContent = cityTwo;
+            document.getElementById('whole-name-two').textContent = firstNameTwo + " " + lastNameTwo;
+            document.getElementById('company-name-two').textContent = companyTwo;
+            document.getElementById('email-name-two').textContent = emailTwo;
+            document.getElementById('skill-name-two').textContent = skillTwo;
+            document.getElementById('average-grades-two').textContent = " " + averageStudentTwo;
+
+            const averageStudentThree = findAverage([88, 93, 92, 81, 95, 98, 77, 94]);
+
+            document.getElementById('city-name-three').textContent = cityThree;
+            document.getElementById('whole-name-three').textContent = firstNameThree + " " + lastNameThree;
+            document.getElementById('company-name-three').textContent = companyThree;
+            document.getElementById('email-name-three').textContent = emailThree;
+            document.getElementById('skill-name-three').textContent = skillThree;
+            document.getElementById('average-grades-three').textContent = " " + averageStudentThree;
+
+            const averageStudentFour = findAverage([71, 81, 72, 92, 79, 82, 91, 90]);
+
+            document.getElementById('city-name-four').textContent = cityFour;
+            document.getElementById('whole-name-four').textContent = firstNameFour + " " + lastNameFour;
+            document.getElementById('company-name-four').textContent = companyFour;
+            document.getElementById('email-name-four').textContent = emailFour;
+            document.getElementById('skill-name-four').textContent = skillFour;
+            document.getElementById('average-grades-four').textContent = " " + averageStudentFour;
         }
 
         getStudentInfo();
 
-
-
-
         return (
             <div>
-                <h1>Student Profiles</h1>
-                    <div className='student-block'>
+                <div className='student-block-one'>
+                    <div>
                         <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasdictablanditiis.jpg'></img><br />
-                        <span id='id-name'></span>
+                    </div>
+
+                    <div>
                         <h1>
                             <span id='whole-name'></span><br />
                         </h1>
@@ -91,10 +95,14 @@ export class PostList extends Component {
                         <span id='skill-name'></span>
                         <p>Average:<span id='average-grades'></span>%</p>
                     </div>
-
-                    <div className='student-block'>
+                </div>
+                <br />
+                <div className='student-block-one'>
+                    <div>
                         <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasautreprehenderit.jpg'></img><br />
-                        <span id='id-name-one'></span>
+                    </div>
+
+                    <div>
                         <h1>
                             <span id='whole-name-one'></span><br />
                         </h1>
@@ -104,45 +112,43 @@ export class PostList extends Component {
                         <span id='skill-name-one'></span>
                         <p>Average:<span id='average-grades-one'></span>%</p>
                     </div>
-
-                    <div className='student-block'>
-                        <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/aspernaturnonsapiente.jpg'></img><br />
-                        <span id='id-name-two'></span>
-                        <h1>
-                            <span id='whole-name-two'></span>
-                        </h1>
-                        <p><span id='city-name-two'></span></p>
-                        <p><span id='email-name-two'></span></p>
-                        <p><span id='company-name-two'></span></p>
-                        <span id='skill-name-two'></span>
-                        <p>Average:<span id='average-grades-two'></span>%</p>
-                    </div>
-
-                    <div className='student-block'>
-                        <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/autautdeserunt.jpg'></img><br />
-                        <span id='id-name-three'></span>
-                        <h1>
-                            <span id='whole-name-three'></span>
-                        </h1>
-                        <p><span id='city-name-three'></span></p>
-                        <p><span id='email-name-three'></span></p>
-                        <p><span id='company-name-three'></span></p>
-                        <span id='skill-name-three'></span>
-                        <p>Average:<span id='average-grades-three'></span>%</p>
-                    </div>
-
-                    <div className='student-block'>
-                        <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/consequaturdelectusquis.jpg'></img><br />
-                        <span id='id-name-four'></span>
-                        <h1>
-                            <span id='whole-name-four'></span>
-                        </h1>
-                        <p><span id='city-name-four'></span></p>
-                        <p><span id='email-name-four'></span></p>
-                        <p><span id='company-name-four'></span></p>
-                        <span id='skill-name-four'></span>
-                        <p>Average:<span id='average-grades-four'></span>%</p>
-                    </div>
+                </div>
+                <br />
+                <div className='student-block'>
+                    <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/aspernaturnonsapiente.jpg'></img><br />
+                    <h1>
+                        <span id='whole-name-two'></span>
+                    </h1>
+                    <p><span id='city-name-two'></span></p>
+                    <p><span id='email-name-two'></span></p>
+                    <p><span id='company-name-two'></span></p>
+                    <span id='skill-name-two'></span>
+                    <p>Average:<span id='average-grades-two'></span>%</p>
+                </div>
+                <br />
+                <div className='student-block'>
+                    <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/autautdeserunt.jpg'></img><br />
+                    <h1>
+                        <span id='whole-name-three'></span>
+                    </h1>
+                    <p><span id='city-name-three'></span></p>
+                    <p><span id='email-name-three'></span></p>
+                    <p><span id='company-name-three'></span></p>
+                    <span id='skill-name-three'></span>
+                    <p>Average:<span id='average-grades-three'></span>%</p>
+                </div>
+                <br />
+                <div className='student-block'>
+                    <img src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/consequaturdelectusquis.jpg'></img><br />
+                    <h1>
+                        <span id='whole-name-four'></span>
+                    </h1>
+                    <p><span id='city-name-four'></span></p>
+                    <p><span id='email-name-four'></span></p>
+                    <p><span id='company-name-four'></span></p>
+                    <span id='skill-name-four'></span>
+                    <p>Average:<span id='average-grades-four'></span>%</p>
+                </div>
             </div>
         )
 }}
