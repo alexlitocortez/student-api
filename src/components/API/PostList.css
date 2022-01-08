@@ -1,19 +1,107 @@
-.student-block {
-    text-align: left;
-    margin-left: 1rem;
-    line-height: 2.5rem;
-    font-family: 'Raleway', sans-serif;
+
+.search-bar {
+    font-size: 2rem;
+    border-bottom: 0.5px solid black;
+    width: 98%;
+    outline: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .student-block-one {
     text-align: left;
-    margin-left: 1rem;
-    line-height: 2.5rem;
+    margin-top: 1rem;
+    line-height: 1.8rem;
     font-family: 'Raleway', sans-serif;
     display: flex;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid black;
+}
+
+.student-image-border {
+    border-radius: 100%;
+    border-color: black;
+    display: block;
+    box-sizing: border-box;
+    border: 0.5px solid #000;
+    padding: 1rem;
+    height: 11rem;
+    width: 10rem;
+}
+
+.student-image {
+    height: 8rem;
+    width: 7.5rem;
+}
+
+.student-info {
+    margin-left: 3rem;
+}
+
+.student-contact-info {
+    padding-left: 1.5rem;
 }
 
 h1 {
     font-size: 3rem;
     text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.student-profile-divider {
+    background-color: 1rem;
+    width: 100%;
+    height: 1rem;
+    display: block;
+}
+
+@media screen and (min-width: 426px) and (max-width: 723px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    .student-block-one {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        margin-top: 1rem;
+        padding: 0;
+    }
+
+    .student-image-border {
+        border-radius: 90%;
+        width: 10rem;
+        height: 11rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1rem;
+    }
+
+    .student-image {
+        width: 7.5rem;
+    }
+
+    .student-info {
+        text-align: center;
+        margin: 0;
+    }
+
+    .student-contact-info {
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    h1 {
+        font-size: 1.5rem;
+    }
 }
