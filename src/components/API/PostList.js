@@ -12,7 +12,7 @@ export class PostList extends Component {
             const data = await response.json();
             const students = data.students;
 
-            const { city, company, email, firstName, id, lastName, skill } = students[0]
+            const { city, company, email, firstName, lastName, skill } = students[0]
             const { city: cityOne, company: companyOne, email: emailOne, firstName: firstNameOne, lastName: lastNameOne, skill: skillOne } = students[1]
             const { city: cityTwo, company: companyTwo, email: emailTwo, firstName: firstNameTwo, lastName: lastNameTwo, skill: skillTwo } = students[2]
             const { city: cityThree, company: companyThree, email: emailThree, firstName: firstNameThree, lastName: lastNameThree, skill: skillThree } = students[3]
@@ -82,7 +82,7 @@ export class PostList extends Component {
             <div>
                 <div className='student-block-one'>
                     <div className='student-image-border'>
-                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasdictablanditiis.jpg'></img>
+                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasdictablanditiis.jpg' alt='student-one'></img>
                     </div>
 
                     <div className='student-info'>
@@ -101,7 +101,7 @@ export class PostList extends Component {
                 <br className='student-profile-divider' />
                 <div className='student-block-one'>
                     <div className='student-image-border'>
-                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasautreprehenderit.jpg'></img><br />
+                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/voluptasautreprehenderit.jpg' alt='student-two'></img><br />
                     </div>
 
                     <div className='student-info'>
@@ -120,7 +120,7 @@ export class PostList extends Component {
                 <br />
                 <div className='student-block-one'>
                     <div className='student-image-border'>
-                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/aspernaturnonsapiente.jpg'></img><br />
+                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/aspernaturnonsapiente.jpg' alt='student-three'></img><br />
                     </div>
 
                     <div className='student-info'>
@@ -139,7 +139,7 @@ export class PostList extends Component {
                 <br />
                 <div className='student-block-one'>
                     <div className='student-image-border'>
-                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/autautdeserunt.jpg'></img><br />
+                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/autautdeserunt.jpg' alt='student-four'></img><br />
                     </div>
 
                     <div className='student-info'>
@@ -158,9 +158,8 @@ export class PostList extends Component {
                 <br />
                 <div className='student-block-one'>
                     <div className='student-image-border'>
-                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/consequaturdelectusquis.jpg'></img><br />
+                        <img className='student-image' src='https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/frontend/images/consequaturdelectusquis.jpg' alt='student-five'></img><br />
                     </div>
-
                     <div className='student-info'>
                         <h1>
                             <span id='whole-name-four'></span>
