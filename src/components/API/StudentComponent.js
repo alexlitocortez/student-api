@@ -13,7 +13,6 @@ export const StudentComponent = (students) => {
                     <p><span>{students.company}</span></p>
                     <p><span>{students.skill}</span></p>
                     <p>Average:<span></span></p>
-                    <p></p>
                 </div>
             </div>
         </div>
