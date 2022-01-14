@@ -1,58 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './PostList.css';
 
 function SearchBar() {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([])
 
-    // Empty array means this useEffect will run once
+    const [students, setStudents] = useState([])
 
     useEffect(() => {
-        fetch('https://api.hatchways.io/assessment/students')
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setItems(result);
-                },
+        axios.get('https://api.hatchways.io/assessment/students')
+            .then((response) => {
+                setStudents(response.data);
+            })
+    }, []) 
 
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
-    }, [])
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return <div>Loading...</div>;
-    } else {
-        return (
+    const moneyTime = () => {
+        console.log('yerp')
+    }
+
+
+    return (
+        <div>
+            <input className='search-bar' type='text' placeholder='Search by name...' onChange={moneyTime} />
             <div>
-                {/* {items.map((item) => ( */}
-                <div className='student-block-one'>
-                    <div className='student-image-border'>
-                        <img></img>
-                    </div>
-
-                    <div className='student-info'>
-                        <h1>
-                            <span></span>
-                        </h1>
-                        <div className='student-contact-info'>
-                            <p><span></span></p>
-                            <p><span></span></p>
-                            <p><span></span></p>
-                            <span></span>
-                            <p>Average: <span></span>%</p>
+                {students.map((student) => {
+                        <div>
+                            {student.firstName}
                         </div>
-                    </div>
-                </div>
+                })}
             </div>
-    )}
+        </div>
+    )
 }
 
 export default SearchBar
+
 
