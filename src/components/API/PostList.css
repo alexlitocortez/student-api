@@ -64,6 +64,10 @@ h1 {
 
 
 @media screen and (max-width: 425px) {
+    .search-bar {
+        width: 90vw;
+    }
+
     .student-block-one {
         display: flex;
         flex-direction: column;
