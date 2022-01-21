@@ -1,17 +1,24 @@
 import axios from 'axios';
 import './PostList.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function SearchBar() {
     const [APIData, setAPIData] = useState([])
     const [searchInput, setSearchInput] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
 
-    const [showResults, setShowResults] = useState(false);
+    const [showResults, setShowResults] = useState('');
 
-    const onClick = () => {
-        setShowResults(true)
-        console.log('it works')
+    const [setHeight, setHeightState] = useState('0px');
+
+    const content = useRef(null);
+
+    function toggleStudentGrades() {
+        setShowResults(showResults === '' ? 'active' : '')
+        setHeightState(
+            showResults === 'active' ? '0px' : `${content.current.scrollHeight}px`
+        )
+        console.log(content.current.scrollHeight);
     }
 
     useEffect(() => {
@@ -74,7 +81,7 @@ function SearchBar() {
                         )
                     })
                 ) : (
-                    APIData.map((item) => {
+                    APIData.map((item, i) => {
                         return (
                             <div className='student-block-one'>
                                 <div className='student-image-border'>
@@ -85,7 +92,7 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className='student-button' onClick={onClick}></button>
+                                        <button className='student-button' onClick={toggleStudentGrades}></button>
                                     </div>
                                     <div className='student-contact-info'>
                                         <p><span>{item.city}</span></p>
@@ -94,7 +101,7 @@ function SearchBar() {
                                         <span>{item.skill}</span>
                                         <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                     </div>
-                                    <div className='grade-container'>
+                                    <div className={showResults ? 'hide' : 'grade-container'}>
                                         <p>Test 1: <span>{item.grades[0]}</span>%</p>
                                         <p>Test 2: <span>{item.grades[1]}</span>%</p>
                                         <p>Test 3: <span>{item.grades[2]}</span>%</p>
@@ -114,5 +121,7 @@ function SearchBar() {
     )
 }
 
-
 export default SearchBar
+
+
+// How to hide only one student's grades
