@@ -7,24 +7,27 @@ function SearchBar() {
     const [searchInput, setSearchInput] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
 
-    const [showResults, setShowResults] = useState('false');
+    const [open, setOpen] = useState([]);  
 
-    const [showButton, setShowButton] = useState();
-
-
-    function toggleStudentGrades(idx) {
-        if (showResults === idx) {
-            setShowResults();
+    const [showResults, setShowResults] = useState(false);    
+    
+    const toggleOpen = (id, idx) => {
+        if (open.includes(id)) {
+            setOpen(open.filter(sid => sid !== id))
+            setShowResults(idx)
         } else {
-            setShowResults(idx);
+            let newOpen = [...open]
+            newOpen.push(id)
+            setOpen(newOpen)
+            setShowResults(idx)
         }
     }
 
     useEffect(() => {
-        axios.get('https://api.hatchways.io/assessment/students')
+    axios.get('https://api.hatchways.io/assessment/students')
             .then((response) => {
-                setAPIData(response.data.students);
-                console.log(response.data.students);
+            setAPIData(response.data.students);
+            console.log(response.data.students);
             })
             .catch(err => {
                 console.log(err)
@@ -57,9 +60,9 @@ function SearchBar() {
             <input className='search-bar' placeholder='Search by name' onChange={(e) => searchItems(e.target.value)} />
                 <div>
                 {searchInput.length > 1 ? (
-                    filteredResults.map((item, idx) => {
+                    filteredResults.map((item, id, idx) => {
                         return (
-                            <div className='student-block-one'>
+                            <div className='student-block-one' key={id, idx}>
                                 <div className='student-image-border'>
                                     <img className='student-image' src={item.pic}></img>
                                 </div>
@@ -68,14 +71,10 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className='student-button' 
+                                        <button className={showResults === idx ? 'moneyTime' : 'student-button'} 
                                         onClick={() => {
-                                            if (showResults === idx) {
-                                                setShowResults();
-                                            } else {
-                                                setShowResults(idx)
-                                            }
-                                        }}>
+                                            toggleOpen(id, idx)
+                                        }}> 
                                         </button>
                                     </div>
                                 <div className='student-contact-info'>
@@ -85,7 +84,7 @@ function SearchBar() {
                                     <span>{item.skill}</span>
                                     <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                 </div>
-                                <div className={showResults === idx ? 'hide' : 'grade-container'}>
+                                <div className={open.includes(id) ? 'hide' : 'grade-container'}>
                                     <p>Test 1: <span>{item.grades[0]}</span>%</p>
                                     <p>Test 2: <span>{item.grades[1]}</span>%</p>
                                     <p>Test 3: <span>{item.grades[2]}</span>%</p>
@@ -100,9 +99,9 @@ function SearchBar() {
                         )
                     })
                 ) : (
-                    APIData.map((item, idx) => {
+                    APIData.map((item, id) => {
                         return (
-                            <div className='student-block-one' key={idx}>
+                            <div className='student-block-one' key={id}>
                                 <div className='student-image-border'>
                                     <img className='student-image' src={item.pic}></img>
                                 </div>
@@ -111,8 +110,10 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className='student-button' 
-                                        onClick={toggleStudentGrades}>
+                                        <button className= {showResults ? 'moneyTime' : 'student-button'} 
+                                        onClick={() => 
+                                            toggleOpen(id)
+                                        }>  
                                         </button>
                                     </div>
                                     <div className='student-contact-info'>
@@ -122,7 +123,7 @@ function SearchBar() {
                                         <span>{item.skill}</span>
                                         <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                     </div>
-                                    <div className={showResults === idx ? 'hide' : 'grade-container'}>
+                                    <div className={open.includes(id) ? 'hide' : 'grade-container'}>
                                         <p>Test 1: <span>{item.grades[0]}</span>%</p>
                                         <p>Test 2: <span>{item.grades[1]}</span>%</p>
                                         <p>Test 3: <span>{item.grades[2]}</span>%</p>
@@ -147,3 +148,4 @@ export default SearchBar
 
 // Put multiple function in onClick (one for the hiding/showing grades, and one for the change in the +/- sign)
 
+// Add a coma to add another function

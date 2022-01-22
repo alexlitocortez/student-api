@@ -91,6 +91,36 @@
     border-left: 10px solid grey;
 } */
 
+.moneyTime {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-right: 3rem;
+    background-color: white;
+}
+
+.moneyTime::before {
+    content: '';
+    position: absolute;
+    left: 65%;
+    top: 35%;
+    width: 50px;
+    margin-left: -40px;
+    margin-top: -5px;
+    border-top: 10px solid grey;
+}
+
+.moneyTime::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 50px;
+    margin-left: -5px;
+    margin-top: -40px;
+    border-left: 10px solid grey;
+}
+
 .student-button:hover {
     cursor: pointer;
 }
