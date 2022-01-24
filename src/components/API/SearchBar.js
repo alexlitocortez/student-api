@@ -30,6 +30,18 @@ function SearchBar() {
         }
     }
 
+    function moneyTime(event) {
+        var key = event.which || event.keyCode;
+        if (key == '13') {
+        const moneyDiv = document.createElement('div');
+        moneyDiv.className = 'custom-class';
+        document.getElementById('moneyTimeOne').appendChild(moneyDiv);
+        console.log('hi');
+        }
+    }
+
+    // Why does this function only work on the first student and not the other students
+
     useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
             .then((response) => {
@@ -143,9 +155,9 @@ function SearchBar() {
                                         <p>Test 7: <span>{item.grades[6]}</span>%</p>
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
                                     </div>
+                                    <div id='moneyTimeOne'></div>
                                     <div>
-                                        <input type='text' className='tag-bar' placeholder='Add a tag' />
-                                        {/* Add onChange */}
+                                        <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={moneyTime} />
                                     </div>
                                 </div>
                             </div>
@@ -158,4 +170,3 @@ function SearchBar() {
 }
 
 export default SearchBar
-
