@@ -9,17 +9,24 @@ function SearchBar() {
 
     const [open, setOpen] = useState([]);  
 
-    const [showResults, setShowResults] = useState(false);    
-    
-    const toggleOpen = (id, idx) => {
+    const [activeButton, setActiveButton] = useState([]);    
+
+    function toggleOpen(id) {
         if (open.includes(id)) {
             setOpen(open.filter(sid => sid !== id))
-            setShowResults(idx)
         } else {
             let newOpen = [...open]
             newOpen.push(id)
             setOpen(newOpen)
-            setShowResults(idx)
+        }
+    }
+
+    function toggleButton(idx) {
+        if (activeButton === idx) {
+        setActiveButton()
+        }
+        else {
+            setActiveButton(idx)
         }
     }
 
@@ -58,11 +65,12 @@ function SearchBar() {
     return (
         <div>
             <input className='search-bar' placeholder='Search by name' onChange={(e) => searchItems(e.target.value)} />
+            <input className='search-bar' placeholder='Search by tag' />
                 <div>
                 {searchInput.length > 1 ? (
                     filteredResults.map((item, id, idx) => {
                         return (
-                            <div className='student-block-one' key={id, idx}>
+                            <div className='student-block-one' key={id}>
                                 <div className='student-image-border'>
                                     <img className='student-image' src={item.pic}></img>
                                 </div>
@@ -71,9 +79,10 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className={showResults === idx ? 'moneyTime' : 'student-button'} 
+                                        <button className={activeButton === idx ? 'moneyTime' : 'student-button'} 
                                         onClick={() => {
-                                            toggleOpen(id, idx)
+                                            toggleOpen(id);
+                                            toggleButton(idx);
                                         }}> 
                                         </button>
                                     </div>
@@ -99,7 +108,7 @@ function SearchBar() {
                         )
                     })
                 ) : (
-                    APIData.map((item, id) => {
+                    APIData.map((item, id, idx) => {
                         return (
                             <div className='student-block-one' key={id}>
                                 <div className='student-image-border'>
@@ -110,10 +119,11 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className= {showResults ? 'moneyTime' : 'student-button'} 
-                                        onClick={() => 
-                                            toggleOpen(id)
-                                        }>  
+                                        <button className= {activeButton === idx ? 'moneyTime' : 'student-button'} 
+                                        onClick={() => {
+                                            toggleOpen(id);
+                                            toggleButton(idx);
+                                        }}>  
                                         </button>
                                     </div>
                                     <div className='student-contact-info'>
@@ -133,6 +143,10 @@ function SearchBar() {
                                         <p>Test 7: <span>{item.grades[6]}</span>%</p>
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
                                     </div>
+                                    <div>
+                                        <input type='text' className='tag-bar' placeholder='Add a tag' />
+                                        {/* Add onChange */}
+                                    </div>
                                 </div>
                             </div>
                         )
@@ -145,7 +159,3 @@ function SearchBar() {
 
 export default SearchBar
 
-
-// Put multiple function in onClick (one for the hiding/showing grades, and one for the change in the +/- sign)
-
-// Add a coma to add another function
