@@ -23,7 +23,7 @@ function SearchBar() {
 
     function toggleButton(idx) {
         if (activeButton === idx) {
-        setActiveButton()
+            setActiveButton()
         }
         else {
             setActiveButton(idx)
@@ -33,14 +33,15 @@ function SearchBar() {
     function moneyTime(event) {
         var key = event.which || event.keyCode;
         if (key == '13') {
-        const moneyDiv = document.createElement('div');
-        moneyDiv.className = 'custom-class';
-        document.getElementById('moneyTimeOne').appendChild(moneyDiv);
-        console.log('hi');
+            const userValue = event.target.value;
+            const moneyDiv = document.createElement('div')
+            moneyDiv.className = 'custom-class'
+            document.getElementById('moneyTimeOne').appendChild(moneyDiv).innerHTML = userValue
         }
     }
 
-    // Why does this function only work on the first student and not the other students
+    // Put 2 divs in a row
+    // 
 
     useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
@@ -120,7 +121,7 @@ function SearchBar() {
                         )
                     })
                 ) : (
-                    APIData.map((item, id, idx) => {
+                    APIData.map((item, id, idx, index) => {
                         return (
                             <div className='student-block-one' key={id}>
                                 <div className='student-image-border'>
@@ -155,7 +156,7 @@ function SearchBar() {
                                         <p>Test 7: <span>{item.grades[6]}</span>%</p>
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
                                     </div>
-                                    <div id='moneyTimeOne'></div>
+                                    <div  key={index} id='moneyTimeOne'></div>
                                     <div>
                                         <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={moneyTime} />
                                     </div>

@@ -159,8 +159,9 @@ h1 {
 }
 
 .custom-class {
-    width: 10px;
-    height: 10px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem;
     background-color: lightgray;
     margin-left: 1.9rem;
     margin-top: 0.5rem;
