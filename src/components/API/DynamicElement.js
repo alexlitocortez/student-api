@@ -14,7 +14,7 @@ import DynamicDiv from './DynamicDiv';
 
 
 
-function DynamicElement() {
+function DynamicElement(idx) {
 
     const [add, setAdd] = useState();
 
@@ -22,6 +22,8 @@ function DynamicElement() {
         let key = event.which || event.keyCode;
         if (key == '13') {
             setAdd()
+        } else {
+          setAdd(idx)
         }
     }
 
@@ -29,7 +31,7 @@ function DynamicElement() {
 
   return (
     <div>
-        {add ? <DynamicDiv /> : null}
+        {add === idx ? <DynamicDiv /> : null}
         <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={handleDiv} />
     </div>
   )
