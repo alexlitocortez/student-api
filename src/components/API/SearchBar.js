@@ -1,6 +1,7 @@
 import axios from 'axios';
 import './PostList.css';
 import React, { useState, useEffect } from 'react';
+import DynamicElement from './DynamicElement';
 
 function SearchBar() {
     const [APIData, setAPIData] = useState([])
@@ -29,19 +30,6 @@ function SearchBar() {
             setActiveButton(idx)
         }
     }
-
-    function moneyTime(event) {
-        var key = event.which || event.keyCode;
-        if (key == '13') {
-            const userValue = event.target.value;
-            const moneyDiv = document.createElement('div')
-            moneyDiv.className = 'custom-class'
-            document.getElementById('moneyTimeOne').appendChild(moneyDiv).innerHTML = userValue
-        }
-    }
-
-    // Put 2 divs in a row
-    // 
 
     useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
@@ -156,9 +144,10 @@ function SearchBar() {
                                         <p>Test 7: <span>{item.grades[6]}</span>%</p>
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
                                     </div>
-                                    <div  key={index} id='moneyTimeOne'></div>
+                                    {/* <div  key={index} id='moneyTimeOne'></div> */}
                                     <div>
-                                        <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={moneyTime} />
+                                        {/* <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={moneyTime} /> */}
+                                        <DynamicElement />
                                     </div>
                                 </div>
                             </div>
