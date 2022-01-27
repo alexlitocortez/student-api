@@ -2,6 +2,7 @@ import axios from 'axios';
 import './PostList.css';
 import React, { useState, useEffect } from 'react';
 import DynamicElement from './DynamicElement';
+import InputField from './InputField';
 
 function SearchBar() {
     const [APIData, setAPIData] = useState([])
@@ -147,7 +148,7 @@ function SearchBar() {
                                     {/* <div  key={index} id='moneyTimeOne'></div> */}
                                     <div>
                                         {/* <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={moneyTime} /> */}
-                                        <DynamicElement />
+                                        <InputField />
                                     </div>
                                 </div>
                             </div>
