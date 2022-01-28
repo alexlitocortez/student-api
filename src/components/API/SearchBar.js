@@ -148,7 +148,7 @@ function SearchBar() {
                                     {/* <div  key={index} id='moneyTimeOne'></div> */}
                                     <div>
                                         {/* <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={moneyTime} /> */}
-                                        <InputField />
+                                        <InputField className='input-field' />
                                     </div>
                                 </div>
                             </div>

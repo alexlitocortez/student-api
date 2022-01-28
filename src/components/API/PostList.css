@@ -20,6 +20,10 @@
     margin-top: 1rem;
 }
 
+.tag-container {
+    display: flex;
+}
+
 .tag-bar {
     font-size: 1rem;
     padding-top: 2rem;
@@ -159,13 +163,31 @@ h1 {
 }
 
 .custom-class {
-    width: fit-content;
+    min-width: 3rem;
     height: fit-content;
     padding: 0.5rem;
     background-color: lightgray;
     margin-left: 1.9rem;
     margin-top: 0.5rem;
     border-radius: 10px;
+    text-align: center;
+}
+
+.custom-class-two {
+    min-width: 3rem;
+    height: fit-content;
+    padding: 0.5rem;
+    background-color: lightgray;
+    margin-left: 1.9rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+@media screen and (max-width: 810px) {
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 @media screen and (min-width: 426px) and (max-width: 723px) {
@@ -206,6 +228,21 @@ h1 {
         margin: 0;
     }
 
+    .name-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .student-button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .moneyTime {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .student-contact-info {
         padding: 0;
     }
@@ -216,6 +253,10 @@ h1 {
 
     h1 {
         font-size: 2rem;
+    }
+
+    .tag-bar {
+        margin-bottom: 1rem;
     }
 }
 
