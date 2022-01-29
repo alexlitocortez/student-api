@@ -18,9 +18,9 @@ function InputField() {
     const handleClick = (e) => {
       let key = e.which || e.keyCode
       if (key == '13') {
-      setValue(value => [...value, query])
-      setAdd('custom-class')
-      console.log(value)
+        setValue(value => [...value, query])
+        setAdd('custom-class')
+        console.log(value)
       }
     }
 
@@ -32,7 +32,6 @@ function InputField() {
     <div>
       <div className='tag-container'>
         <div className={add ? 'custom-class' : ''} id='valueOne'>{value[0]}</div>
-        <div className={add ? 'custom-class-two' : ''} id='valueOne'>{value[1]}</div>
       </div>
       <input label='Name: ' className='tag-bar' placeholder='Add a tag' onChange={updateQuery} onKeyPress={handleClick} />
     </div>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import './PostList.css';
 import React, { useState, useEffect } from 'react';
-import DynamicElement from './DynamicElement';
 import InputField from './InputField';
+import StudentButton from './StudentButton';
 
 function SearchBar() {
     const [APIData, setAPIData] = useState([])
@@ -11,7 +11,16 @@ function SearchBar() {
 
     const [open, setOpen] = useState([]);  
 
-    const [activeButton, setActiveButton] = useState([]);    
+    // function toggleOpen(id) {
+    //     if (open.includes(id)) {
+    //         setOpen(open.filter(sid => sid !== id))
+    //     } else {
+    //         let newOpen = [...open]
+    //         newOpen.push(id)
+    //         setOpen(newOpen)
+    //     }
+    // }
+
 
     function toggleOpen(id) {
         if (open.includes(id)) {
@@ -20,15 +29,6 @@ function SearchBar() {
             let newOpen = [...open]
             newOpen.push(id)
             setOpen(newOpen)
-        }
-    }
-
-    function toggleButton(idx) {
-        if (activeButton === idx) {
-            setActiveButton()
-        }
-        else {
-            setActiveButton(idx)
         }
     }
 
@@ -81,12 +81,7 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className={activeButton === idx ? 'moneyTime' : 'student-button'} 
-                                        onClick={() => {
-                                            toggleOpen(id);
-                                            toggleButton(idx);
-                                        }}> 
-                                        </button>
+                                        <StudentButton />
                                     </div>
                                 <div className='student-contact-info'>
                                     <p><span>{item.city}</span></p>
@@ -110,7 +105,7 @@ function SearchBar() {
                         )
                     })
                 ) : (
-                    APIData.map((item, id, idx, index) => {
+                    APIData.map((item, id) => {
                         return (
                             <div className='student-block-one' key={id}>
                                 <div className='student-image-border'>
@@ -121,12 +116,7 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className= {activeButton === idx ? 'moneyTime' : 'student-button'} 
-                                        onClick={() => {
-                                            toggleOpen(id);
-                                            toggleButton(idx);
-                                        }}>  
-                                        </button>
+                                        <StudentButton />
                                     </div>
                                     <div className='student-contact-info'>
                                         <p><span>{item.city}</span></p>
@@ -145,9 +135,7 @@ function SearchBar() {
                                         <p>Test 7: <span>{item.grades[6]}</span>%</p>
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
                                     </div>
-                                    {/* <div  key={index} id='moneyTimeOne'></div> */}
                                     <div>
-                                        {/* <input type='text' className='tag-bar' placeholder='Add a tag' onKeyPress={moneyTime} /> */}
                                         <InputField className='input-field' />
                                     </div>
                                 </div>
@@ -161,3 +149,9 @@ function SearchBar() {
 }
 
 export default SearchBar
+
+
+
+// Why won't the button click open/hide the grades
+// It has to do with onClick function but I can't put a function inside the component tag 
+// I can't put a function because the onClick function uses ID and 
