@@ -21,7 +21,6 @@ function SearchBar() {
     //     }
     // }
 
-
     function toggleOpen(id) {
         if (open.includes(id)) {
             setOpen(open.filter(sid => sid !== id))
@@ -36,7 +35,6 @@ function SearchBar() {
     axios.get('https://api.hatchways.io/assessment/students')
             .then((response) => {
             setAPIData(response.data.students);
-            console.log(response.data.students);
             })
             .catch(err => {
                 console.log(err)
@@ -70,7 +68,7 @@ function SearchBar() {
             <input className='search-bar' placeholder='Search by tag' />
                 <div>
                 {searchInput.length > 1 ? (
-                    filteredResults.map((item, id, idx) => {
+                    filteredResults.map((item, id) => {
                         return (
                             <div className='student-block-one' key={id}>
                                 <div className='student-image-border'>
@@ -125,7 +123,7 @@ function SearchBar() {
                                         <span>{item.skill}</span>
                                         <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                     </div>
-                                    <div className={open.includes(id) ? 'hide' : 'grade-container'}>
+                                    {/* <div className={open.includes(id) ? 'hide' : 'grade-container'}>
                                         <p>Test 1: <span>{item.grades[0]}</span>%</p>
                                         <p>Test 2: <span>{item.grades[1]}</span>%</p>
                                         <p>Test 3: <span>{item.grades[2]}</span>%</p>
@@ -134,7 +132,7 @@ function SearchBar() {
                                         <p>Test 6: <span>{item.grades[5]}</span>%</p>
                                         <p>Test 7: <span>{item.grades[6]}</span>%</p>
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
-                                    </div>
+                                    </div> */}
                                     <div>
                                         <InputField className='input-field' />
                                     </div>
