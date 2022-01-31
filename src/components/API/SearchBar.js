@@ -117,11 +117,11 @@ function SearchBar() {
                                         <StudentButton />
                                     </div>
                                     <div className='student-contact-info'>
+                                        <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                         <p><span>{item.city}</span></p>
                                         <p><span>{item.email}</span></p>
                                         <p><span>{item.company}</span></p>
                                         <span>{item.skill}</span>
-                                        <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                     </div>
                                     {/* <div className={open.includes(id) ? 'hide' : 'grade-container'}>
                                         <p>Test 1: <span>{item.grades[0]}</span>%</p>
