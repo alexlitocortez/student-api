@@ -6,10 +6,13 @@ import StudentButton from './StudentButton';
 
 function SearchBar() {
     const [APIData, setAPIData] = useState([])
-    const [searchInput, setSearchInput] = useState('');
-    const [filteredResults, setFilteredResults] = useState([]);
+    const [searchInput, setSearchInput] = useState('')
+    const [filteredResults, setFilteredResults] = useState([])
 
-    const [open, setOpen] = useState([]);  
+    const [tagInput, setTagInput] = useState('');
+    const [filteredTag, setFilteredTag] = useState([])
+
+    const [open, setOpen] = useState([])  
 
     // function toggleOpen(id) {
     //     if (open.includes(id)) {
@@ -20,16 +23,6 @@ function SearchBar() {
     //         setOpen(newOpen)
     //     }
     // }
-
-    function toggleOpen(id) {
-        if (open.includes(id)) {
-            setOpen(open.filter(sid => sid !== id))
-        } else {
-            let newOpen = [...open]
-            newOpen.push(id)
-            setOpen(newOpen)
-        }
-    }
 
     useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
@@ -53,6 +46,20 @@ function SearchBar() {
         }
     }
 
+    const searchTags = (tagValue) => {
+        setTagInput(tagValue)
+        if (tagInput !== '') {
+            const tagOne = document.getElementById('valueOne').innerHTML
+            const filteredTags = filteredTag.filter((item) => {
+                return 
+        })
+        setFilteredTag(filteredTags)
+        }
+    }
+
+// Put tag information in filteredTag variable
+
+
     function findAverage(array) {
         let average = 0;
         for(let i = 0; i < array.length; i++) {
@@ -65,7 +72,7 @@ function SearchBar() {
     return (
         <div>
             <input className='search-bar' placeholder='Search by name' onChange={(e) => searchItems(e.target.value)} />
-            <input className='search-bar' placeholder='Search by tag' />
+            <input className='search-bar' placeholder='Search by tag' onChange={(e) => searchTags(e.target.value)} />
                 <div>
                 {searchInput.length > 1 ? (
                     filteredResults.map((item, id) => {
@@ -134,7 +141,7 @@ function SearchBar() {
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
                                     </div> */}
                                     <div>
-                                        <InputField className='input-field' />
+                                        <InputField />
                                     </div>
                                 </div>
                             </div>
@@ -148,8 +155,3 @@ function SearchBar() {
 
 export default SearchBar
 
-
-
-// Why won't the button click open/hide the grades
-// It has to do with onClick function but I can't put a function inside the component tag 
-// I can't put a function because the onClick function uses ID and 

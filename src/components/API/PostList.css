@@ -142,7 +142,6 @@
 
 .grade-container {
   margin-top: 3rem;
-  padding-left: 1.5rem;
 }
 
 h1 {
@@ -195,7 +194,8 @@ h1 {
 
 @media screen and (max-width: 425px) {
   .search-bar {
-    width: 90vw;
+    width: 80vw;
+    font-size: 1rem;
   }
 
   .student-block-one {
@@ -247,6 +247,8 @@ h1 {
   .grade-container {
     width: 10rem;
     height: 5rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h1 {
@@ -255,6 +257,7 @@ h1 {
 
   .tag-bar {
     margin-bottom: 1rem;
+    width: 80vw;
   }
 }
 

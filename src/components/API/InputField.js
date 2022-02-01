@@ -17,10 +17,10 @@ function InputField() {
 
     const handleClick = (e) => {
       let key = e.which || e.keyCode
-      if (key == '13') {
-        setValue(value => [...value, query])
-        setAdd('custom-class')
-        console.log(value)
+        if (key == '13') {
+          setValue(value => [...value, query])
+          setAdd('custom-class')
+          console.log(value)
       }
     }
 
