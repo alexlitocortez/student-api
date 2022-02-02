@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function InputField() {
 
@@ -8,19 +8,12 @@ function InputField() {
 
     const [value, setValue] = useState([]);
 
-    // function handleChange(e) {
-    //     let key = e.which || e.keyCode
-    //     if (key == '13') {
-    //     setValue(e.target.value)
-    //     setAdd('custom-class')
-    // }}
-
     const handleClick = (e) => {
       let key = e.which || e.keyCode
         if (key == '13') {
           setValue(value => [...value, query])
           setAdd('custom-class')
-          console.log(value)
+          console.log('hi')
       }
     }
 

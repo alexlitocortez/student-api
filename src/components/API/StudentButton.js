@@ -26,7 +26,6 @@ function StudentButton(idx, id) {
         axios.get('https://api.hatchways.io/assessment/students')
                 .then((response) => {
                 setAPIData(response.data.students)
-                console.log(response.data.students)
                 })
                 .catch(err => {
                     console.log(err)

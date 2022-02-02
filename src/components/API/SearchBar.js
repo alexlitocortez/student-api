@@ -5,14 +5,49 @@ import InputField from './InputField';
 import StudentButton from './StudentButton';
 
 function SearchBar() {
-    const [APIData, setAPIData] = useState([])
-    const [searchInput, setSearchInput] = useState('')
-    const [filteredResults, setFilteredResults] = useState([])
+    const [APIData, setAPIData] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
+    const [filteredResults, setFilteredResults] = useState([]);
 
-    const [tagInput, setTagInput] = useState('');
-    const [filteredTag, setFilteredTag] = useState([])
+    const [open, setOpen] = useState([]); 
 
-    const [open, setOpen] = useState([])  
+    const [tagValue, setTagValue] = useState([]);
+
+    function addTags(e) {
+        let key = e.which || e.keyCode
+        let thisTag = document.getElementById('valueOne').classList.contains('custom-class')
+        let thisTagText = thisTag.innerHTML.length > 0
+        const foo = []
+        if (thisTagText) {
+            foo.push(setTagValue(thisTagText))
+        }
+    }
+
+    const updateTags = (tagValue) => {
+        setTagValue(tagValue)
+        if (searchInput !== '') {
+            const filteredTagData = tagValue.filter((item) => {
+                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+            })
+        setFilteredResults(filteredTagData)
+        } else {
+            setFilteredResults(tagValue)
+        }
+    }
+
+    // const searchItems = (searchValue) => {
+    //     setSearchInput(searchValue)
+    //     if (searchInput !== '') {
+    //     const filteredData = APIData.filter((item) => {
+    //         return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+    //     })
+    //     setFilteredResults(filteredData)
+    //     } else {
+    //         setFilteredResults(APIData)
+    //     }
+    // }
+
+
 
     // function toggleOpen(id) {
     //     if (open.includes(id)) {
@@ -46,20 +81,6 @@ function SearchBar() {
         }
     }
 
-    const searchTags = (tagValue) => {
-        setTagInput(tagValue)
-        if (tagInput !== '') {
-            const tagOne = document.getElementById('valueOne').innerHTML
-            const filteredTags = filteredTag.filter((item) => {
-                return 
-        })
-        setFilteredTag(filteredTags)
-        }
-    }
-
-// Put tag information in filteredTag variable
-
-
     function findAverage(array) {
         let average = 0;
         for(let i = 0; i < array.length; i++) {
@@ -72,7 +93,7 @@ function SearchBar() {
     return (
         <div>
             <input className='search-bar' placeholder='Search by name' onChange={(e) => searchItems(e.target.value)} />
-            <input className='search-bar' placeholder='Search by tag' onChange={(e) => searchTags(e.target.value)} />
+            <input className='search-bar' placeholder='Search by tag' />
                 <div>
                 {searchInput.length > 1 ? (
                     filteredResults.map((item, id) => {
