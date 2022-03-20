@@ -1,68 +1,33 @@
 import axios from 'axios';
 import './PostList.css';
 import React, { useState, useEffect } from 'react';
-import InputField from './InputField';
-import StudentButton from './StudentButton';
 
 function SearchBar() {
-    const [APIData, setAPIData] = useState([]);
+    const [APIData, setAPIData] = useState([])
     const [searchInput, setSearchInput] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
 
-    const [open, setOpen] = useState([]); 
+    const [open, setOpen] = useState([]);  
 
-    const [tagValue, setTagValue] = useState([]);
-
-    function addTags(e) {
-        let key = e.which || e.keyCode
-        let thisTag = document.getElementById('valueOne').classList.contains('custom-class')
-        let thisTagText = thisTag.innerHTML.length > 0
-        const foo = []
-        if (thisTagText) {
-            foo.push(setTagValue(thisTagText))
-        }
-    }
-
-    const updateTags = (tagValue) => {
-        setTagValue(tagValue)
-        if (searchInput !== '') {
-            const filteredTagData = tagValue.filter((item) => {
-                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-            })
-        setFilteredResults(filteredTagData)
+    const [showResults, setShowResults] = useState(false);    
+    
+    const toggleOpen = (id, idx) => {
+        if (open.includes(id)) {
+            setOpen(open.filter(sid => sid !== id))
+            setShowResults(idx)
         } else {
-            setFilteredResults(tagValue)
+            let newOpen = [...open]
+            newOpen.push(id)
+            setOpen(newOpen)
+            setShowResults(idx)
         }
     }
-
-    // const searchItems = (searchValue) => {
-    //     setSearchInput(searchValue)
-    //     if (searchInput !== '') {
-    //     const filteredData = APIData.filter((item) => {
-    //         return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-    //     })
-    //     setFilteredResults(filteredData)
-    //     } else {
-    //         setFilteredResults(APIData)
-    //     }
-    // }
-
-
-
-    // function toggleOpen(id) {
-    //     if (open.includes(id)) {
-    //         setOpen(open.filter(sid => sid !== id))
-    //     } else {
-    //         let newOpen = [...open]
-    //         newOpen.push(id)
-    //         setOpen(newOpen)
-    //     }
-    // }
 
     useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
             .then((response) => {
             setAPIData(response.data.students);
+            console.log(response.data.students);
             })
             .catch(err => {
                 console.log(err)
@@ -93,12 +58,11 @@ function SearchBar() {
     return (
         <div>
             <input className='search-bar' placeholder='Search by name' onChange={(e) => searchItems(e.target.value)} />
-            <input className='search-bar' placeholder='Search by tag' />
                 <div>
                 {searchInput.length > 1 ? (
-                    filteredResults.map((item, id) => {
+                    filteredResults.map((item, id, idx) => {
                         return (
-                            <div className='student-block-one' key={id}>
+                            <div className='student-block-one' key={[id, idx]}>
                                 <div className='student-image-border'>
                                     <img className='student-image' src={item.pic}></img>
                                 </div>
@@ -107,7 +71,11 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <StudentButton />
+                                        <button className={showResults === idx ? 'moneyTime' : 'student-button'} 
+                                        onClick={() => {
+                                            toggleOpen(id, idx)
+                                        }}> 
+                                        </button>
                                     </div>
                                 <div className='student-contact-info'>
                                     <p><span>{item.city}</span></p>
@@ -142,16 +110,20 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <StudentButton />
+                                        <button className= {showResults ? 'moneyTime' : 'student-button'} 
+                                        onClick={() => 
+                                            toggleOpen(id)
+                                        }>  
+                                        </button>
                                     </div>
                                     <div className='student-contact-info'>
-                                        <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                         <p><span>{item.city}</span></p>
                                         <p><span>{item.email}</span></p>
                                         <p><span>{item.company}</span></p>
                                         <span>{item.skill}</span>
+                                        <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                     </div>
-                                    {/* <div className={open.includes(id) ? 'hide' : 'grade-container'}>
+                                    <div className={open.includes(id) ? 'hide' : 'grade-container'}>
                                         <p>Test 1: <span>{item.grades[0]}</span>%</p>
                                         <p>Test 2: <span>{item.grades[1]}</span>%</p>
                                         <p>Test 3: <span>{item.grades[2]}</span>%</p>
@@ -160,9 +132,6 @@ function SearchBar() {
                                         <p>Test 6: <span>{item.grades[5]}</span>%</p>
                                         <p>Test 7: <span>{item.grades[6]}</span>%</p>
                                         <p>Test 8: <span>{item.grades[7]}</span>%</p>
-                                    </div> */}
-                                    <div>
-                                        <InputField />
                                     </div>
                                 </div>
                             </div>
@@ -175,4 +144,5 @@ function SearchBar() {
 }
 
 export default SearchBar
+
 
