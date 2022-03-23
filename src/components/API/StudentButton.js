@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import './PostList.css';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import './PostList.css'
+import axios from 'axios'
 
 function StudentButton(idx, id) {
 
@@ -31,8 +31,6 @@ function StudentButton(idx, id) {
             setOpen(newOpen)
         }
     }
-
-    // How to get the array of grades that match with object
 
     useEffect(() => {
         axios.get('https://api.hatchways.io/assessment/students')

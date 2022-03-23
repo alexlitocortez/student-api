@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 function InputField() {
 
-    const [add, setAdd] = useState();
+    const [add, setAdd] = useState()
 
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('')
 
-    const [value, setValue] = useState([]);
+    const [value, setValue] = useState([])
 
     const handleClick = (e) => {
       let key = e.which || e.keyCode
