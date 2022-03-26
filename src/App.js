@@ -1,10 +1,10 @@
 import './App.css';
-import SearchBar from './components/API/SearchBar';
+import StudentInfo from './components/StudentInfo';
 
 function App() {
   return (
     <div className="App">
-      <SearchBar />
+      <StudentInfo />
     </div>
   );
 }

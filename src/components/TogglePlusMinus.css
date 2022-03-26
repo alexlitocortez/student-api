@@ -1,0 +1,11 @@
+.plus-adjustment {
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+
+.minus-adjustment {
+  height: 5rem;
+  width: 5rem;
+  cursor: pointer;
+}

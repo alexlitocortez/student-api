@@ -1,25 +1,22 @@
 import axios from 'axios'
-import './PostList.css'
+import './StudentInfo.css'
 import React, { useState, useEffect } from 'react'
-import { AiFillPlusCircle } from 'react-icons/ai'
-import { AiFillMinusCircle } from 'react-icons/ai'
+import TogglePlusMinus from './TogglePlusMinus'
+
 
 function SearchBar() {
     const [APIData, setAPIData] = useState([])
     const [searchInput, setSearchInput] = useState('')
     const [filteredResults, setFilteredResults] = useState([])
     const [open, setOpen] = useState([])  
-    const [showResults, setShowResults] = useState(false)   
     
     const toggleOpen = (id, idx) => {
         if (open.includes(id)) {
             setOpen(open.filter(sid => sid !== id))
-            setShowResults(idx)
         } else {
             let newOpen = [...open]
             newOpen.push(id)
             setOpen(newOpen)
-            setShowResults(idx)
         }
     }
 
@@ -60,9 +57,9 @@ function SearchBar() {
             <input className='search-bar' placeholder='Search by name' onChange={(e) => searchItems(e.target.value)} />
                 <div>
                 {searchInput.length > 1 ? (
-                    filteredResults.map((item, id, idx) => {
+                    filteredResults.map((item, id) => {
                         return (
-                            <div className='student-block-one' key={[id, idx]}>
+                            <div className='student-block-one' key={[id]}>
                                 <div className='student-image-border'>
                                     <img className='student-image' src={item.pic}></img>
                                 </div>
@@ -71,10 +68,8 @@ function SearchBar() {
                                             <h1>
                                                 <span>Name: {item.firstName + " " + item.lastName}</span><br />
                                             </h1>
-                                            <button className={showResults === idx ? 'moneyTime' : 'student-button'} 
-                                            onClick={() => {
-                                                toggleOpen(id, idx)
-                                            }}> 
+                                            <button className='grade-button' onClick={() => toggleOpen(id)}>
+                                                <TogglePlusMinus />
                                             </button>
                                         </div>
                                     <div className='student-contact-info'>
@@ -84,7 +79,7 @@ function SearchBar() {
                                         <span>{item.skill}</span>
                                         <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                     </div>
-                                    <div className={open.includes(id) ? 'hide' : 'grade-container'}>
+                                    <div className={open.includes(id) ? 'grade-container' : 'hide'}>
                                         <p>Test 1: <span>{item.grades[0]}</span>%</p>
                                         <p>Test 2: <span>{item.grades[1]}</span>%</p>
                                         <p>Test 3: <span>{item.grades[2]}</span>%</p>
@@ -101,7 +96,7 @@ function SearchBar() {
                 ) : (
                     APIData.map((item, id) => {
                         return (
-                            <div className='student-block-one' key={id}>
+                            <div className='student-block-one' key={[id]}>
                                 <div className='student-image-border'>
                                     <img className='student-image' src={item.pic}></img>
                                 </div>
@@ -110,10 +105,8 @@ function SearchBar() {
                                         <h1>
                                             <span>{item.firstName + " " + item.lastName}</span><br />
                                         </h1>
-                                        <button className= {showResults ? 'moneyTime' : 'student-button'} 
-                                        onClick={() => 
-                                            toggleOpen(id)
-                                        }>  
+                                        <button className='grade-button' onClick={() => toggleOpen(id)}>
+                                            <TogglePlusMinus />
                                         </button>
                                     </div>
                                     <div className='student-contact-info'>
@@ -123,7 +116,7 @@ function SearchBar() {
                                         <span>{item.skill}</span>
                                         <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                                     </div>
-                                    <div className={open.includes(id) ? 'hide' : 'grade-container'}>
+                                    <div className={open.includes(id) ? 'grade-container' : 'hide'}>
                                         <p>Test 1: <span>{item.grades[0]}</span>%</p>
                                         <p>Test 2: <span>{item.grades[1]}</span>%</p>
                                         <p>Test 3: <span>{item.grades[2]}</span>%</p>
