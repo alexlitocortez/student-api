@@ -59,6 +59,7 @@ function Student(id) {
                         <p><span>{item.email}</span></p>
                         <p><span>{item.company}</span></p>
                         <p><span>{item.skill}</span></p>
+                        <p></p>
                         <p>Average: <span>{findAverage(item.grades)}</span>%</p>
                     </div>
                     <div className={open.includes(id) ? 'grade-container' : 'hide'}>
