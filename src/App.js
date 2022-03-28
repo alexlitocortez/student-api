@@ -1,10 +1,12 @@
-import './App.css';
-import StudentInfo from './components/StudentInfo';
+import './App.css'
+import StudentSearchbar from './components/StudentSearchbar'
+import Student from './components/Student'
 
 function App() {
+
   return (
     <div className="App">
-      <StudentInfo />
+      <StudentSearchbar />
     </div>
   );
 }

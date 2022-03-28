@@ -1,0 +1,14 @@
+.search-bar {
+  font-size: 2rem;
+  border-bottom: 0.5px solid black;
+  width: 98%;
+  outline: none;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 425px) {
+  .search-bar {
+    width: 80vw;
+    font-size: 1rem;
+  }
+}

@@ -9,14 +9,6 @@
   overflow: hidden;
 }
 
-.search-bar {
-  font-size: 2rem;
-  border-bottom: 0.5px solid black;
-  width: 98%;
-  outline: none;
-  margin-top: 1rem;
-}
-
 .student-block-one {
   width: 100%;
   text-align: left;
@@ -124,6 +116,9 @@ h1 {
 
   .student-image {
     width: 7.5rem;
+    display: flex;
+    justify-content: center;
+    margin: auto;
   }
 
   .student-info {

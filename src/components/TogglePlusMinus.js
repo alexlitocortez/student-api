@@ -3,9 +3,11 @@ import './TogglePlusMinus.css'
 import plusSign from '../images/plusSign.png'
 import minusSign from '../images/minusSign.png'
 
-function TogglePlusMinus( { toggleOpen }) {
+function TogglePlusMinus() {
 
     const [showIcon, setShowIcon] = useState(false)
+    const [open, setOpen] = useState([]) 
+
 
     const handleChangeActive = () => {
         setShowIcon((button) => {
@@ -13,16 +15,26 @@ function TogglePlusMinus( { toggleOpen }) {
         })
     }
 
+    const toggleOpen = (id) => {
+        if (open.includes(id)) {
+            setOpen(open.filter(sid => sid !== id))
+        } else {
+            let newOpen = [...open]
+            newOpen.push(id)
+            setOpen(newOpen)
+        }
+    }
+
   return (
-    <div>
+    <>
         {showIcon ? (
             <img 
             className='minus-adjustment' 
             src={minusSign} 
             alt='minus sign' 
-            onClick={() => {
+            onClick={(id) => {
                 handleChangeActive()
-                toggleOpen()
+                toggleOpen(id)
             }}
             />
         ) : (
@@ -30,12 +42,13 @@ function TogglePlusMinus( { toggleOpen }) {
             className='plus-adjustment' 
             src={plusSign} 
             alt='plus sign' 
-            onClick={() => {
+            onClick={(id) => {
                 handleChangeActive()
+                toggleOpen(id)
             }}
             />
         )}
-    </div>
+    </>
   )
 }
 
