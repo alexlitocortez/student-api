@@ -6,23 +6,11 @@ import minusSign from '../images/minusSign.png'
 function TogglePlusMinus() {
 
     const [showIcon, setShowIcon] = useState(false)
-    const [open, setOpen] = useState([]) 
-
 
     const handleChangeActive = () => {
         setShowIcon((button) => {
             return !button
         })
-    }
-
-    const toggleOpen = (id) => {
-        if (open.includes(id)) {
-            setOpen(open.filter(sid => sid !== id))
-        } else {
-            let newOpen = [...open]
-            newOpen.push(id)
-            setOpen(newOpen)
-        }
     }
 
   return (
@@ -34,7 +22,6 @@ function TogglePlusMinus() {
             alt='minus sign' 
             onClick={(id) => {
                 handleChangeActive()
-                toggleOpen(id)
             }}
             />
         ) : (
@@ -44,7 +31,6 @@ function TogglePlusMinus() {
             alt='plus sign' 
             onClick={(id) => {
                 handleChangeActive()
-                toggleOpen(id)
             }}
             />
         )}
